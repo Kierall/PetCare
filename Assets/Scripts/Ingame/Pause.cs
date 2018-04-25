@@ -1,13 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Time : MonoBehaviour
+public class Pause : MonoBehaviour
 {
-    float timer;
-    public Text clock;
-    public Slider hunger;
 
     // Use this for initialization
     void Start()

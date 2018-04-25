@@ -80,5 +80,4 @@ public class Settings : MonoBehaviour
             Debug.Log(QualitySettings.GetQualityLevel());
         }
     }
-    public
 }
