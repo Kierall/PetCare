@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Hunger : MonoBehaviour
 {
     [SerializeField]
-    public Slider hungerBar;
+     float maxFood;
     [SerializeField]
-    public float maxFood;
-    [SerializeField]
-    public float currentFood;
+     float currentFood;
 
+
+    public delegate void UpdateHunger(float hunger);
+  
     // Rate of food depletion per IRL minute
     [SerializeField]
     public float foodDepletion = 1;
@@ -23,11 +23,12 @@ public class Hunger : MonoBehaviour
     [SerializeField]
     private Depletion depletion;
 
+    public UpdateHunger updateHunger;
+
     float timer;
     // Use this for initialization
     void Start()
     {
-        hungerBar.maxValue = maxFood;
         currentFood = maxFood;
     }
 
@@ -36,14 +37,8 @@ public class Hunger : MonoBehaviour
     {
         timer += Time.deltaTime * 60;
         FoodDepletion();
-        /*Food = 100
-         * day 0 - food decresess the normal rate (100 - 1?)
-         * 
-         * 
-         */
-        hungerBar.value = currentFood;
+        updateHunger(currentFood);
     }
-
     void FoodDepletion()
     {
         currentFood -= (foodDepletion / 60) * Time.deltaTime * HungerDepletionMultiplier(depletion.days);

@@ -1188,6 +1188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120651444}
   - component: {fileID: 1120651445}
+  - component: {fileID: 1120651446}
   m_Layer: 5
   m_Name: HungerBar
   m_TagString: Untagged
@@ -1263,6 +1264,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1120651446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120651443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0391b7c678820de43921f15cf826af5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerBar: {fileID: 0}
 --- !u!1 &1289409261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1427,7 @@ GameObject:
   - component: {fileID: 1426632309}
   - component: {fileID: 1426632308}
   - component: {fileID: 1426632307}
+  - component: {fileID: 1426632310}
   m_Layer: 5
   m_Name: FoodButton
   m_TagString: Untagged
@@ -1457,7 +1471,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1514,6 +1528,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1426632305}
+--- !u!95 &1426632310
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1426632305}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38ec6788cd642f143bee5d85815c55c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1511796126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,6 +1704,7 @@ GameObject:
   - component: {fileID: 1615460341}
   - component: {fileID: 1615460340}
   - component: {fileID: 1615460339}
+  - component: {fileID: 1615460342}
   m_Layer: 5
   m_Name: FeedButton
   m_TagString: Untagged
@@ -1716,7 +1748,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1773,6 +1805,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1615460337}
+--- !u!95 &1615460342
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1615460337}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38ec6788cd642f143bee5d85815c55c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1696916433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,7 +2282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f020fbe23848b646acca6ca88e955e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerBar: {fileID: 1120651445}
   maxFood: 100
   currentFood: 0
   foodDepletion: 100
