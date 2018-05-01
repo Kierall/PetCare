@@ -5,9 +5,9 @@ using UnityEngine;
 public class Hunger : MonoBehaviour
 {
     [SerializeField]
-     float maxFood;
+     public float maxFood;
     [SerializeField]
-     float currentFood;
+    public float currentFood;
 
 
     public delegate void UpdateHunger(float hunger);
@@ -41,7 +41,18 @@ public class Hunger : MonoBehaviour
     }
     void FoodDepletion()
     {
-        currentFood -= (foodDepletion / 60) * Time.deltaTime * HungerDepletionMultiplier(depletion.days);
+        if (currentFood >= 0)
+        {
+            currentFood -= (foodDepletion / 60) * Time.deltaTime * HungerDepletionMultiplier(depletion.days);
+        }
+        if(currentFood >= 100)
+        {
+            currentFood = maxFood;
+        }
+        if(foodDepletion <= 0)
+        {
+            foodDepletion /= 60;
+        }
     }
 
     float HungerDepletionMultiplier(int dayCount)

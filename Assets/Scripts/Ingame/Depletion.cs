@@ -22,15 +22,9 @@ public class Depletion : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime * 3600.0f;
-        float time = timer;
-        MicrowaveTime(time);
-      
+        MicrowaveTime(timer);
     }
-    //float hungerDepletion(int dayCount)
-    //{ 
-    //    return (float)(Mathf.Pow(decay, dayCount));
-    //}
-
+    
     void MicrowaveTime(float time)
     {
        
