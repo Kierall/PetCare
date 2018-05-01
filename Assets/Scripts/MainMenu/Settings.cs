@@ -14,22 +14,21 @@ public class Settings : MonoBehaviour
     private void Start()
     {
         resolution = Screen.resolutions;
-       
-        Res();
-        qSlider.maxValue = 6;
-        qSlider.minValue = 1;
-        QualitySettings.SetQualityLevel(0);
-    }
-    void Res()
-    {
-        for(int i = 0; i <resolution.Length; i++)
+
+        res.onValueChanged.AddListener(delegate { Screen.SetResolution(resolution[res.value].width, resolution[res.value].height, true); });
+
+        for (int i = 0; i < resolution.Length; i++)
         {
             Dropdown.OptionData addedData = new Dropdown.OptionData();
             addedData.text = ResToString(resolution[i]);
             res.options.Add(addedData);
         }
-    }
 
+        qSlider.maxValue = 6;
+        qSlider.minValue = 1;
+        QualitySettings.SetQualityLevel(0);
+    }
+   
     string ResToString(Resolution RTS)
     {
         return RTS.width + " x " + RTS.height;
@@ -78,6 +77,17 @@ public class Settings : MonoBehaviour
             QualitySettings.SetQualityLevel(5);
             graphicsText.text = "Quality: Ultra";
             Debug.Log(QualitySettings.GetQualityLevel());
+        }
+    }
+    public void FullScreenToggle()
+    {
+        if(Screen.fullScreen == true)
+        {
+            Screen.fullScreen = false;
+        }
+        else
+        {
+            Screen.fullScreen = true;
         }
     }
 }
