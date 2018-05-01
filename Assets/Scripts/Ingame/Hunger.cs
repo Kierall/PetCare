@@ -9,7 +9,8 @@ public class Hunger : MonoBehaviour
     [SerializeField]
     public float currentFood;
 
-
+    // @kimberly: You're creating a few delegates... that all kinda do the same thing.
+    //            Maybe you could create a *generic* "OnValueChanged<T>"?
     public delegate void UpdateHunger(float hunger);
   
     // Rate of food depletion per IRL minute

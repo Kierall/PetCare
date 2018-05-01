@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class Depletion : MonoBehaviour
 {
     float timer;
-    [SerializeField]
+    [SerializeField]        // @kimberly: You don't need the [SerializeField] anymore if it's public.
     public Text clock;
     [SerializeField]
     public Text dayCounter;
 
+    // @kimberly: Get rid of commented out code if you don't need it anymore.
     //public Slider hunger;
 
     int hours;
@@ -21,6 +22,9 @@ public class Depletion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // @kimberly: We both know what the 3600.0f is used for, but it wouldn't
+        //            be clear to anyone else. ;( Consider making this a
+        //            data member of this class so it's clear!
         timer += Time.deltaTime * 3600.0f;
         MicrowaveTime(timer);
     }
