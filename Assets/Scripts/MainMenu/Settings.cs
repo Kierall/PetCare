@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
+    // @kimberly: Do you need to store this as a data member?
+    //            Seems like you only need it in Start()
     Resolution[] resolution;
    
     public Dropdown res;
@@ -19,6 +21,9 @@ public class Settings : MonoBehaviour
 
         for (int i = 0; i < resolution.Length; i++)
         {
+            // @kimberly: You may want to use the ctor for Dropdown.OptionData()
+            //            that accepts a string to initialize with.
+            // https://docs.unity3d.com/ScriptReference/UI.Dropdown.OptionData-ctor.html
             Dropdown.OptionData addedData = new Dropdown.OptionData();
             addedData.text = ResToString(resolution[i]);
             res.options.Add(addedData);
@@ -29,6 +34,9 @@ public class Settings : MonoBehaviour
         QualitySettings.SetQualityLevel(0);
     }
    
+    // @kimberly: As a general rule of thumb, I generally prefer to always
+    //            specify whether its public/private/protected instead of
+    //            omitting it and relying on the default (private).
     string ResToString(Resolution RTS)
     {
         return RTS.width + " x " + RTS.height;
@@ -39,9 +47,16 @@ public class Settings : MonoBehaviour
 
     public void graphics()
     {
+        /*
+        @kimberly: Is there any reason why you're creating new variables?
+         */
         Slider graphics = qSlider;
         Text graphicsText = qText;
 
+        /*
+        @kimberly: You could probably condense this down into a switch
+                   as a start!
+         */
         if (graphics.value == 1)
         {
             QualitySettings.SetQualityLevel(0);
@@ -81,6 +96,12 @@ public class Settings : MonoBehaviour
     }
     public void FullScreenToggle()
     {
+        /*
+        @kimberly: this could be condensed into a shorter
+                   statement by assigning Screen.fullScreen to its inverse
+
+                   Screen.fullScreen = !Screen.fullScreen;
+        */
         if(Screen.fullScreen == true)
         {
             Screen.fullScreen = false;

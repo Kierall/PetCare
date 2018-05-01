@@ -13,6 +13,9 @@ public class GameOver : MonoBehaviour
         hunger.updateHunger += gameOver;
     }
 
+    // @kimberly: Remove empty Update() calls if you aren't using them!
+    //            see: https://blogs.unity3d.com/2015/12/23/1k-update-calls/
+    
     // Update is called once per frame
     void Update()
     {
