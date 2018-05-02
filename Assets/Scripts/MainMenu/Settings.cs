@@ -5,31 +5,33 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    Resolution[] resolution;
    
+
     public Dropdown res;
     public Slider qSlider;
     public Text qText;
 
     private void Start()
     {
+         Resolution[] resolution;
         resolution = Screen.resolutions;
 
-        res.onValueChanged.AddListener(delegate { Screen.SetResolution(resolution[res.value].width, resolution[res.value].height, true); });
+        res.onValueChanged.AddListener(delegate { Screen.SetResolution(resolution[res.value].width, resolution[res.value].height,Screen.fullScreen); });
 
         for (int i = 0; i < resolution.Length; i++)
         {
-            Dropdown.OptionData addedData = new Dropdown.OptionData();
-            addedData.text = ResToString(resolution[i]);
+            Dropdown.OptionData addedData = new Dropdown.OptionData(ResToString(resolution[i]));
             res.options.Add(addedData);
         }
 
         qSlider.maxValue = 6;
         qSlider.minValue = 1;
         QualitySettings.SetQualityLevel(0);
+
+       
     }
    
-    string ResToString(Resolution RTS)
+    private string ResToString(Resolution RTS)
     {
         return RTS.width + " x " + RTS.height;
     }
@@ -46,48 +48,36 @@ public class Settings : MonoBehaviour
         {
             QualitySettings.SetQualityLevel(0);
             graphicsText.text = "Quality: Lowest";
-            Debug.Log(QualitySettings.GetQualityLevel());
         }
         if (graphics.value == 2)
         {
             QualitySettings.SetQualityLevel(1);
             graphicsText.text = "Quality: Low";
-            Debug.Log(QualitySettings.GetQualityLevel());
         }
         if (graphics.value == 3)
         {
             QualitySettings.SetQualityLevel(2);
             graphicsText.text = "Quality: Medium";
-            Debug.Log(QualitySettings.GetQualityLevel());
-        }
+                 }
         if (graphics.value == 4)
         {
             QualitySettings.SetQualityLevel(3);
             graphicsText.text = "Quality: High";
-            Debug.Log(QualitySettings.GetQualityLevel());
         }
         if (graphics.value == 5)
         {
             QualitySettings.SetQualityLevel(4);
             graphicsText.text = "Quality: Highest";
-            Debug.Log(QualitySettings.GetQualityLevel());
         }
         if (graphics.value == 6)
         {
             QualitySettings.SetQualityLevel(5);
             graphicsText.text = "Quality: Ultra";
-            Debug.Log(QualitySettings.GetQualityLevel());
         }
     }
     public void FullScreenToggle()
     {
-        if(Screen.fullScreen == true)
-        {
-            Screen.fullScreen = false;
-        }
-        else
-        {
-            Screen.fullScreen = true;
-        }
+        Screen.fullScreen = !Screen.fullScreen;
     }
 }
+

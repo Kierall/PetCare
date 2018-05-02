@@ -6,12 +6,9 @@ using UnityEngine.UI;
 public class Depletion : MonoBehaviour
 {
     float timer;
-    [SerializeField]
     public Text clock;
-    [SerializeField]
     public Text dayCounter;
-
-    //public Slider hunger;
+    private float hourToSecondCoversion = 3600.0f;
 
     int hours;
     int mintues;
@@ -21,7 +18,7 @@ public class Depletion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime * 3600.0f;
+        timer += Time.deltaTime * hourToSecondCoversion;
         MicrowaveTime(timer);
     }
     

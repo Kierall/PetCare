@@ -5,40 +5,35 @@ using UnityEngine.UI;
 
 public class FoodCounter : MonoBehaviour
 {
-    Hunger hunger;
-   
-    public delegate void FoodValue(int food);
-    public FoodValue foodValue;
+    [SerializeField]
+    private int hungerValChange;
 
-    private void Start()
+    public int animalFoodLeft = 0;
+
+    public OnValueChange<int> foodValue;
+
+
+    public void AddAnimalFood()
     {
-        hunger = FindObjectOfType<Hunger>();
+        animalFoodLeft += 1;
+        foodValue(animalFoodLeft);
     }
 
-    public int foodLeft = 0;
-
-    public void AddFood()
+    public void SubtactAnimalFood()
     {
-        foodLeft += 1;
-        foodValue(foodLeft);
-    }
-
-    public void SubtactFood()
-    {
-        if (foodLeft <= 0)
+        if (animalFoodLeft <= 0)
         {
-            foodLeft = 0;
+            animalFoodLeft = 0;
         }
         else
         {
-            hunger.currentFood += 100;
+            CommonAccessibles.globalHunger.currentFood += hungerValChange;
         }
-        if (hunger.currentFood >= hunger.maxFood)
+        if (CommonAccessibles.globalHunger.currentFood >= CommonAccessibles.globalHunger.maxFood)
         {
-            foodLeft -= 1;
+            animalFoodLeft -= 1;
         }
-        foodValue(foodLeft);
-        
-    }
+        foodValue(animalFoodLeft);
 
+    }
 }

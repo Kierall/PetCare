@@ -2,28 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void OnValueChange<T>(T newValue);
+
 public class Hunger : MonoBehaviour
 {
-    [SerializeField]
-     public float maxFood;
-    [SerializeField]
+ 
+    public float maxFood;
     public float currentFood;
-
-
-    public delegate void UpdateHunger(float hunger);
   
     // Rate of food depletion per IRL minute
-    [SerializeField]
     public float foodDepletion = 1;
 
     // Base multiplier applied to food depletion tick
-    [SerializeField]
     public float decay = 2;
 
     [SerializeField]
     private Depletion depletion;
 
-    public UpdateHunger updateHunger;
+    public OnValueChange<float> updateHunger;
 
     float timer;
     // Use this for initialization

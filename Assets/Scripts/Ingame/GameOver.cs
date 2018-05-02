@@ -5,18 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    Hunger hunger;
     // Use this for initialization
     void Start()
     {
-        hunger = FindObjectOfType<Hunger>();
-        hunger.updateHunger += gameOver;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        CommonAccessibles.globalHunger.updateHunger += gameOver;
     }
 
     void gameOver(float food)
